@@ -23,6 +23,8 @@ By installing the package, determine the user's device type.
 
 ### Dependency injection
 
+An example of using a package with the dependency injection:
+
 ```php
 use M2Collective\DefiningUserDevice\DefiningUserDevice;
 
@@ -65,6 +67,8 @@ final class Example
 
 ### Facades
 
+An example of using a package with the facades:
+
 ```php
 use M2Collective\DefiningUserDevice\Facades\DefiningUserDevice;
 
@@ -92,6 +96,8 @@ final class Example
 ```
 
 ### Blade Directives
+
+An example of using a package with the blade directive:
 
 ```bladehtml
 @isDesktop
