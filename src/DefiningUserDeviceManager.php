@@ -11,17 +11,17 @@ final class DefiningUserDeviceManager implements DefiningUserDevice
     /**
      * @var bool
      */
-    protected bool $isDesktop;
+    protected bool $isDesktop = false;
 
     /**
      * @var bool
      */
-    protected bool $isMobile;
+    protected bool $isMobile = false;
 
     /**
      * @var bool
      */
-    protected bool $isTablet;
+    protected bool $isTablet = false;
 
     /**
      * @param MobileDetect $mobileDetect
@@ -32,17 +32,11 @@ final class DefiningUserDeviceManager implements DefiningUserDevice
         if(!$mobileDetect->isMobile() && !$mobileDetect->isTablet()) {
             $this->isDesktop = true;
         } else {
-            $this->isDesktop = false;
-
             if($mobileDetect->isMobile() && !$mobileDetect->isTablet()) {
                 $this->isMobile = true;
             } else {
-                $this->isMobile = false;
-
                 if($mobileDetect->isMobile() && $mobileDetect->isTablet()) {
                     $this->isTablet = true;
-                } else {
-                    $this->isTablet = false;
                 }
             }
         }

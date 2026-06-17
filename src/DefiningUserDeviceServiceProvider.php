@@ -7,7 +7,7 @@ use Illuminate\Support\ServiceProvider;
 use M2Collective\BladeDirective\Concerns\RegisterBladeDirectives;
 use M2Collective\DefiningUserDevice\Views\Directives\IsDesktopDirective;
 use M2Collective\DefiningUserDevice\Views\Directives\IsMobileDirective;
-use M2Collective\DefiningUserDevice\Views\Directives\IsTableDirective;
+use M2Collective\DefiningUserDevice\Views\Directives\IsTabletDirective;
 
 final class DefiningUserDeviceServiceProvider extends ServiceProvider
 {
@@ -32,7 +32,7 @@ final class DefiningUserDeviceServiceProvider extends ServiceProvider
         $this->registerBladeDirectives([
             new IsDesktopDirective(),
             new IsMobileDirective(),
-            new IsTableDirective(),
+            new IsTabletDirective(),
         ]);
     }
 }

@@ -5,7 +5,7 @@ namespace M2Collective\DefiningUserDevice\Views\Directives;
 
 use M2Collective\BladeDirective\LogicalBladeDirective;
 
-final class IsTableDirective implements LogicalBladeDirective
+final class IsTabletDirective implements LogicalBladeDirective
 {
     /**
      * @return string
