@@ -41,7 +41,7 @@ final class Example
     public function __construct(
         DefiningUserDevice $definingUserDevice
     ) {
-           $this->definingUserDevice = $definingUserDevice;
+        $this->definingUserDevice = $definingUserDevice;
     }
     
     /**
