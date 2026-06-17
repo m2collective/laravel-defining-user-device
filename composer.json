@@ -1,7 +1,7 @@
 {
   "$schema": "https://getcomposer.org/schema.json",
   "name": "m2collective/laravel-defining-user-device",
-  "description": "",
+  "description": "A package for detecting the user's device.",
   "keywords": [],
   "license": "MIT",
   "require": {
