@@ -3,7 +3,11 @@
   "name": "m2collective/laravel-defining-user-device",
   "description": "A package for detecting the user's device.",
   "keywords": [
-    "m2collective"
+    "m2collective",
+    "laravel",
+    "defining",
+    "user",
+    "device"
   ],
   "license": "MIT",
   "require": {
