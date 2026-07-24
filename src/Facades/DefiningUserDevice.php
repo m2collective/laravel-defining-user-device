@@ -11,7 +11,7 @@ use M2Collective\DefiningUserDevice\DefiningUserDevice as DefiningUserDeviceCont
  * @method static bool isMobile()
  * @method static bool isTablet()
  *
- * @see \M2Collective\DefiningUserDevice\DefiningUserDeviceManager
+ * @see \M2Collective\DefiningUserDevice\DefiningUserDeviceService
  */
 final class DefiningUserDevice extends Facade
 {
