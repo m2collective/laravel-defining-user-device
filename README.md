@@ -100,31 +100,31 @@ final class Example
 An example of using a package with the blade directive:
 
 ```bladehtml
-@isDesktop
+@openingDefiningUserDesktopDevice
     //...
-@elseIsDesktop
+@logicalDefiningUserDesktopDevice
     //...
-@endIsDesktop
+@closingDefiningUserDesktopDevice
 ```
 
 or 
 
 ```bladehtml
-@isMobile
-    //...
-@elseIsMobile
-    //...
-@endIsMobile
+@openingDefiningUserMobileDevice
+//...
+@logicalDefiningUserMobileDevice
+//...
+@closingDefiningUserMobileDevice
 ```
 
 or 
 
 ```bladehtml
-@isTablet
-    //...
-@elseIsTablet
-    //...
-@endIsTablet
+@openingDefiningUserTabletDevice
+//...
+@logicalDefiningUserTabletDevice
+//...
+@closingDefiningUserTabletDevice
 ```
 
 ## License
