@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace M2Collective\DefiningUserDevice;
 
 use Illuminate\Support\ServiceProvider;
+use M2Collective\DefiningUserDevice\Commands\ConfigPublishCommand;
 use M2Collective\DefiningUserDevice\Views\Directives\DefiningUserDesktopDevice;
 use M2Collective\DefiningUserDevice\Views\Directives\DefiningUserMobileDevice;
 use M2Collective\DefiningUserDevice\Views\Directives\DefiningUserTabletDevice;
@@ -36,20 +37,57 @@ final class DefiningUserDeviceServiceProvider extends ServiceProvider
     {
         $this->registerDirectives([
             new DefiningUserDesktopDevice(
-                config('defining-user-device.directives.definingUserDesktopDevice.openingTag'),
-                config('defining-user-device.directives.definingUserDesktopDevice.logicalTag'),
-                config('defining-user-device.directives.definingUserDesktopDevice.closingTag'),
+                config(
+                    'defining-user-device.directives.definingUserDesktopDevice.openingTag',
+                    'openingDefiningUserDesktopDevice'
+                ),
+                config(
+                    'defining-user-device.directives.definingUserDesktopDevice.logicalTag',
+                    'logicalDefiningUserDesktopDevice'
+                ),
+                config(
+                    'defining-user-device.directives.definingUserDesktopDevice.closingTag',
+                    'closingDefiningUserDesktopDevice'
+                ),
             ),
             new DefiningUserMobileDevice(
-                config('defining-user-device.directives.definingUserMobileDevice.openingTag'),
-                config('defining-user-device.directives.definingUserMobileDevice.logicalTag'),
-                config('defining-user-device.directives.definingUserMobileDevice.closingTag'),
+                config(
+                    'defining-user-device.directives.definingUserMobileDevice.openingTag',
+                    'openingDefiningUserMobileDevice'
+                ),
+                config(
+                    'defining-user-device.directives.definingUserMobileDevice.logicalTag',
+                    'logicalDefiningUserMobileDevice'
+                ),
+                config(
+                    'defining-user-device.directives.definingUserMobileDevice.closingTag',
+                    'closingDefiningUserMobileDevice'
+                ),
             ),
             new DefiningUserTabletDevice(
-                config('defining-user-device.directives.definingUserTabletDevice.openingTag'),
-                config('defining-user-device.directives.definingUserTabletDevice.logicalTag'),
-                config('defining-user-device.directives.definingUserTabletDevice.closingTag'),
+                config(
+                    'defining-user-device.directives.definingUserTabletDevice.openingTag',
+                    'openingDefiningUserTabletDevice'
+                ),
+                config(
+                    'defining-user-device.directives.definingUserTabletDevice.logicalTag',
+                    'logicalDefiningUserTabletDevice'
+                ),
+                config(
+                    'defining-user-device.directives.definingUserTabletDevice.closingTag',
+                    'closingDefiningUserTabletDevice'
+                ),
             ),
         ]);
+
+        $this->publishes([
+            __DIR__ . '/../config/defining-user-device.php' => config_path('defining-user-device.php'),
+        ], 'm2collective:defining-user-device:publish-config');
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                ConfigPublishCommand::class,
+            ]);
+        }
     }
 }
