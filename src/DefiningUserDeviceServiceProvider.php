@@ -4,23 +4,28 @@ declare(strict_types=1);
 namespace M2Collective\DefiningUserDevice;
 
 use Illuminate\Support\ServiceProvider;
-use M2Collective\BladeDirective\Concerns\RegisterBladeDirectives;
-use M2Collective\DefiningUserDevice\Views\Directives\IsDesktopDirective;
-use M2Collective\DefiningUserDevice\Views\Directives\IsMobileDirective;
-use M2Collective\DefiningUserDevice\Views\Directives\IsTabletDirective;
+use M2Collective\DefiningUserDevice\Views\Directives\DefiningUserDesktopDevice;
+use M2Collective\DefiningUserDevice\Views\Directives\DefiningUserMobileDevice;
+use M2Collective\DefiningUserDevice\Views\Directives\DefiningUserTabletDevice;
+use M2Collective\ViewDirectives\Providers\RegisterDirectives;
 
 final class DefiningUserDeviceServiceProvider extends ServiceProvider
 {
-    use RegisterBladeDirectives;
+    use RegisterDirectives;
 
     /**
      * @return void
      */
     public function register(): void
     {
+        $this->mergeConfigFrom(
+            __DIR__ . '/../config/defining-user-device.php',
+            'defining-user-device'
+        );
+
         $this->app->singleton(
             DefiningUserDevice::class,
-            DefiningUserDeviceManager::class
+            DefiningUserDeviceService::class
         );
     }
 
@@ -29,10 +34,22 @@ final class DefiningUserDeviceServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->registerBladeDirectives([
-            new IsDesktopDirective(),
-            new IsMobileDirective(),
-            new IsTabletDirective(),
+        $this->registerDirectives([
+            new DefiningUserDesktopDevice(
+                config('defining-user-device.directives.definingUserDesktopDevice.openingTag'),
+                config('defining-user-device.directives.definingUserDesktopDevice.logicalTag'),
+                config('defining-user-device.directives.definingUserDesktopDevice.closingTag'),
+            ),
+            new DefiningUserMobileDevice(
+                config('defining-user-device.directives.definingUserMobileDevice.openingTag'),
+                config('defining-user-device.directives.definingUserMobileDevice.logicalTag'),
+                config('defining-user-device.directives.definingUserMobileDevice.closingTag'),
+            ),
+            new DefiningUserTabletDevice(
+                config('defining-user-device.directives.definingUserTabletDevice.openingTag'),
+                config('defining-user-device.directives.definingUserTabletDevice.logicalTag'),
+                config('defining-user-device.directives.definingUserTabletDevice.closingTag'),
+            ),
         ]);
     }
 }
