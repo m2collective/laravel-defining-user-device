@@ -13,7 +13,7 @@
   "require": {
     "php": "^8.3",
     "laravel/framework": "^13.0",
-    "m2collective/laravel-blade-directive": "^1.0",
+    "m2collective/laravel-view-directives": "^1.0",
     "mobiledetect/mobiledetectlib": "^4.8"
   },
   "autoload": {
