@@ -15,6 +15,14 @@ You can install the package via composer:
 composer require m2collective/laravel-defining-user-device
 ```
 
+## Commands
+
+Publishing the configuration file:
+
+```shell
+php artisan m2collective:defining-user-device:publish-config
+```
+
 The package will automatically register itself.
 
 ## Usage
